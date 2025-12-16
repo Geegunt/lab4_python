@@ -1,20 +1,27 @@
-from src.power import power_function
-from src.constants import SAMPLE_CONSTANT
+import random
+from src.simulation import run_simulation
 
 
 def main() -> None:
     """
-    Обязательнная составляющая программ, которые сдаются. Является точкой входа в приложение
-    :return: Данная функция ничего не возвращает
+    Точка входа в приложение
+    
+    Запускает две симуляции работы библиотеки
+    с разными seed для генератора случайных чисел
     """
+    print("Система управления библиотекой - Лабораторная работа №4")
+    print()
+    
+    seed1 = random.randint(1, 10000)
+    run_simulation(steps=20, seed=seed1)
+    
+    print()
+    print("Запуск второй симуляции с другим seed...")
+    print()
+    
+    seed2 = random.randint(1, 10000)
+    run_simulation(steps=15, seed=seed2)
 
-    target, degree = map(int, input("Введите два числа разделенные пробелом: ").split(" "))
-
-    result = power_function(target=target, power=degree)
-
-    print(result)
-
-    print(SAMPLE_CONSTANT)
 
 if __name__ == "__main__":
     main()
